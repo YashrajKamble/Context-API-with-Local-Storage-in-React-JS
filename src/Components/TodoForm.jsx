@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { useTodo } from "../Context"; // Make sure this is the correct path to your useTodo hook
 
 function TodoForm() {
   const [todo, setTodo] = useState("");
   const { addTodo } = useTodo();
 
   const add = (e) => {
-    e.preventDefault;
+    e.preventDefault();
     if (!todo) return;
 
     addTodo({ todo, completed: false });
@@ -17,7 +18,7 @@ function TodoForm() {
       <input
         type="text"
         value={todo}
-        onChange={(e) => e.target.value}
+        onChange={(e) => setTodo(e.target.value)} // Corrected onChange handler
         placeholder="Write Todo..."
         className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5"
       />
